@@ -4,7 +4,7 @@ pipeline {
     environment {
         BUILD_ENV = 'production' 
     }
-
+    
     stages {
         stage('Checkout') {
             steps {
@@ -16,6 +16,7 @@ pipeline {
         stage('Prerequisite') {
             steps {
                 echo 'Setting up Python environment...'
+                sh 'cd "$WORKSPACE" || exit 1'
                 sh 'python3 -m venv venv'  
                 sh 'source venv/bin/activate'  
             }
