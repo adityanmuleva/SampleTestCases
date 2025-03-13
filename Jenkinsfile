@@ -35,10 +35,11 @@ pipeline {
                 sh './venv/bin/python run_tests.py'
             }
         }
-
-        stage('Code Quality Check') {
+        stage('SonarQube Analysis') {
             steps {
-                echo 'Running static code analysis...'
+                echo 'Performing Code Analysis'
+                sh 'sonar-scanner'
+                echo 'Code Analysis Completed'
             }
         }
         
