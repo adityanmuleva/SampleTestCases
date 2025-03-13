@@ -32,7 +32,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh './venv/bin/python run_tests.py'
+                sh 'coverage run -m unittest discover -s tests'
+                sh 'coverage xml -o coverage.xml'
             }
         }
         stage('SonarQube Analysis') {
