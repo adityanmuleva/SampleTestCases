@@ -1,4 +1,3 @@
 pytest-cov
 coverage
 pytest
-sonar-scanner
