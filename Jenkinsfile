@@ -51,13 +51,10 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    try {
                         echo 'Running tests...'
                         sh './venv/bin/pytest --cov=src --cov-report=xml --cov-report=term'
-                    } catch (Exception e) {
-                        error "Test stage failed: ${e.message}"
-                    }
                 }
+                
             }
         }
 
