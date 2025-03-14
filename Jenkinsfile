@@ -38,13 +38,11 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo 'Performing Code Analysis'
-                withSonarQubeEnv('SonarQube') {
                     sh '''
                     $SONAR_SCANNER_HOME/bin/sonar-scanner \
                       -Dsonar.host.url=$SONAR_URL \
                       -Dsonar.token=$SONAR_TOKEN
                     '''
-                }
                 echo 'Code Analysis Completed'
             }
         }
