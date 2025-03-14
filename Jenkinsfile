@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo 'Performing Code Analysis'
                     sh '''
-                    $SONAR_SCANNER_HOME/bin/sonar-scanner \
+                    sonar-scanner \
                       -Dsonar.host.url=$SONAR_URL \
                       -Dsonar.token=$SONAR_TOKEN
                     '''
