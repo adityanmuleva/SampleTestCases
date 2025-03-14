@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        SONAR_SCANNER_HOME = tool 'SonarQube'        
         SONAR_TOKEN = credentials('sonar-token')      
         SONAR_URL = 'http://sonarqube:9000'           
     }
@@ -11,17 +10,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out the code...'
-                checkout scm
+                checkout scm  
             }
         }
-
         stage('Prerequisite') {
             steps {
                 echo 'Setting up Python environment...'
-                sh 'python3 -m venv venv'
+                sh 'cd "$WORKSPACE" || exit 1'
+                sh 'python3 -m venv venv'  
             }
         }
-
         stage('Build') {
             steps {
                 echo 'Installing dependencies...'
